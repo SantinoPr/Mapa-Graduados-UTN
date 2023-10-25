@@ -1,12 +1,24 @@
 import './registro.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import { useState } from 'react';
 
   
 export function Registro(){
+
+  const [image,setImage]= useState(null);
+
+  const verImagen=(e)=>{   
+    const file =e.target.files[0];
+    if(file){
+        //creo un objeto en base a la url que obtengo
+        const imageUrl=URL.createObjectURL(file)
+        setImage(imageUrl)
+    }
+ }
+
   return( 
     <>
-    
     <div className="container">
             <h2>Registro graduados</h2>    
         <div className="items_registro">
@@ -45,6 +57,14 @@ export function Registro(){
                     <option value="">Select City</option>
                 </select>
             </div> 
+            <div className='files'>
+              <div className="input-group mb-3">
+                <input type="file" className="form-control" id="inputGroupFile02" accept='image/*'
+                onChange={verImagen}></input>
+               </div>
+               <img src={image} className="img-thumbnail" alt="..."></img>
+
+            </div>
         </div>
     </div>
     </>

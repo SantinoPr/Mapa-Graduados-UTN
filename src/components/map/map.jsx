@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
+
+
 function Map() {
 
   const [marker, setMarker]=useState(null);
@@ -75,23 +77,5 @@ function Map() {
     </div>
   );
   }
-
-/*async function ObtenerLatitudLongitud(country) {
-  try {
-    let codificar = await geoCodificar(country.value);
-    let campos = codificar.split(" ");
-    const latitud=campos[0];
-    const longitud=campos[1];
-    return(
-    <Marker position={[latitud, longitud]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-    </Marker>
-    )
-  } catch (error) {
-    console.error("Error", error);
-  }
-}*/
 
 export default Map;
