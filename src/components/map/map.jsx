@@ -3,19 +3,36 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useState } from "react";
+import {  useState } from "react";
 
 
-function Map() {
+function Map({datosMapa}) {
 
   const [marker, setMarker]=useState(null);
   const [country, setCountry]=useState('');
 
+  let latitud=0;
+  let longitud=0;
+
+    function data(){
+      if(longitud!='' && latitud!=''){
+        return {
+          'ciudad' : country,
+          'latitud' : latitud,
+          'longitud' : longitud
+        }
+      }
+      else{
+        console.log("No se cargaron los datos")
+      }
+    }
+
+  
+    
+
+
     async function ObtenerLatitudLongitud() {
       try {
-
-        let latitud;
-        let longitud;
 
          const apiUrl = "https://nominatim.openstreetmap.org/search?q="+country+"&format=json&limit=1";
          await fetch(apiUrl)
@@ -26,10 +43,11 @@ function Map() {
           return response.json()
          })
          .then((data) => {
-          longitud = data[0].lon;
-          latitud = data[0].lat;
-          const latlon = this.latitud + " " + this.longitud;
+          latitud=data[0].lat;
+          longitud=data[0].lon;
+          const latlon = latitud + " " + longitud;
           console.log(latlon);
+          
         })
         .catch((err) => console.log(err));     
         
@@ -47,6 +65,8 @@ function Map() {
     }
   }
 
+  
+
 
 
   return (
@@ -56,13 +76,13 @@ function Map() {
         Localidad
       </label>
       <input id="country" className="form-control" type="text"placeholder="Localidad" value={country} aria-label="default input example"
-       onChange={(e) => setCountry(e.target.value)} // Actualiza el estado con el valor del input
-      ></input>
+       onChange={(e) => setCountry(e.target.value)}  
+      ></input> Actualiza el estado con el valor del input 
       <div id="emailHelp" className="form-text">
         Ingrese la localidad a buscar
       </div>
     </div>
-    <input id="btnSearch" className="btn btn-primary" type="button" value="Buscar" onClick={ObtenerLatitudLongitud} ></input>
+    <input id="btnSearch" className="btn btn-primary" type="button" value="Buscar" onClick={async ()=>{await ObtenerLatitudLongitud(); datosMapa(data())}}></input>
       <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} className="map">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -77,5 +97,7 @@ function Map() {
     </div>
   );
   }
+
+  
 
 export default Map;
