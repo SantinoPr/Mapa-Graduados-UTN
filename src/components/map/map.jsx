@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./map.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -6,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 import {  useState } from "react";
 
 
-function Map({datosMapa}) {
+export default function Map({datosMapa}) {
 
   const [marker, setMarker]=useState(null);
   const [country, setCountry]=useState('');
@@ -64,11 +65,6 @@ function Map({datosMapa}) {
       console.error("Error", error);
     }
   }
-
-  
-
-
-
   return (
     <div className="container">
     <div className="mb-3">
@@ -98,6 +94,18 @@ function Map({datosMapa}) {
   );
   }
 
-  
 
-export default Map;
+export function Mapa(props){
+  return(
+    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} className="map">
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[props.lat, props.lon]}>
+          <Popup>
+            {props.ciudad} <br /> {props.nombre}
+          </Popup>
+        </Marker>
+      </MapContainer>
+  )
+}
