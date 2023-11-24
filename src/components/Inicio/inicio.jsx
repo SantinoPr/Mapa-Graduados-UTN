@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import './inicio.css';
 
 export default function Inicio(){
 
@@ -39,8 +40,8 @@ export default function Inicio(){
         <button type='button' onClick={listar} >Solicitar</button>
 
         <button type='button' onClick={Markers}>Mostrar</button>
-        <div className="mapita">
-         <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} className="map">
+        <div >
+         <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} className="mapita">
           <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
