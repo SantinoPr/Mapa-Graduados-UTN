@@ -17,11 +17,7 @@ export default function PerfilGraduado(){
 
     async function recibirDatos(){
 
-    await fetch('https://localhost:7073/graduado/listar'/*,{
-       method:'GET',
-       mode: 'cors',
-       headers:{"Content-type" : 'multipart/form-data'}
-       }*/)
+    await fetch('https://localhost:7073/graduado/listarJson')
       .then(response=>(response.json())
       .then(data=>{
         setNombre(data.nombre);
