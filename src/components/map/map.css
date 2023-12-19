@@ -1,8 +1,28 @@
 .map{
-    height: 400px;
+    height: 500px;
     width: 100%;
-    justify-content: center;
-    display: flex;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+.containerMap{
+    width: 100%;
+    display: block;
+}
+#country{
+    margin-top: 5.5%;
+    background-color:transparent;
+    border: transparent;
+    border-bottom: 2px solid rgb(144, 136, 136);
+    color: #fff;
+}
+#country::placeholder{
+    color:rgb(145, 137, 137)
+}
+.inputLoca{
+    margin-top: 5%;
+
+}
+
+#btnVer{
+    margin-top: 4%;
 }

@@ -1,9 +1,27 @@
 
 .itemPerfil{
-    text-align: center;
+    width: 400px;
+    margin-bottom: 8%;;
 }
-img{
-    border-radius: 50%;
+.fotoGraduado{
     width: 400px;
 
+}
+
+.contPerfil{
+    display: flex;
+    justify-content: center;
+}
+.perfil{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-top: 5%;
+}
+.perfilImage{
+    margin-right: 5%;
+}
+
+.perfilContent{
+    width: 700px;
 }

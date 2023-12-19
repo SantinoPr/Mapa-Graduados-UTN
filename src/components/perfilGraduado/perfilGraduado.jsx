@@ -7,12 +7,13 @@ import "leaflet/dist/leaflet.css";
 
 export default function PerfilGraduado(){
 
-    const [nombre, setNombre]=useState("Cristian");
+    const [nombre, setNombre]=useState("Cristian Martinez");
     const [carrera, setCarrera]= useState ("Ingeniera Electronica");
-    const [numero, setNumero]=useState ("3435");
-    const [ciudad, setCiudad]=useState ('wakanda');
+    const [numero, setNumero]=useState ("34356556");
+    const [ciudad, setCiudad]=useState ('Victoria');
     const [latitud, setLatitud]=useState (51.505);
     const [longitud, setLongitud]=useState (-0.09);
+    const [mail,setMail]=useState('graduado@gmail.com');
 
 
     async function recibirDatos(){
@@ -33,22 +34,42 @@ export default function PerfilGraduado(){
      }
 
     return(
-        <div className="container">
-            <div className='itemPerfil'>
+        <div className="contPerfil">
+          <div className='perfil'>
+            <div className='perfilImage'>
+              <div className='itemPerfil'>
                 <img src={fotoDefault} className="fotoGraduado"></img>
-                <p>{nombre}</p>
+              </div>
+              <div className='itemPerfil'>
+                <label><b>Email</b></label> <br/>
+                <label>{mail}</label> <br/>
+              </div>
+              <div className='itemPerfil'>
+                <label><b>Celular</b></label> <br/>
+                <label>{numero}</label> <br/>
+              </div>      
+              <div className='itemPerfil'>
+                <label><b>Ubicacion</b></label> <br/>
+                <label>{ciudad}</label> <br/>
+              </div>      
             </div>
+            <div className='perfilContent'>
+              <div className='itemPerfil'>
+                <h2>{nombre}</h2>
+              </div>
+            
             <div className='itemPerfil'>
               <b>Carrera/s finalizada/s</b> 
               <p>{carrera}</p>
             </div>
             <div className='itemPerfil'>
-              <b>Numero</b> 
-              <p>{numero}</p>
+              <b>Edad</b> 
+              <p>29</p>
             </div>
-            <Mapa lat={latitud} lon={longitud} ciudad={ciudad} nombre={nombre}/>
+            <Mapa lat={latitud} lon={longitud} ciudad={ciudad} nombre={nombre} className='mapa'/>
             <button type="button" className="btn btn-primary" onClick={recibirDatos}>cargar</button>
-           
+            </div>      
+          </div>     
        </div>
   )
 }

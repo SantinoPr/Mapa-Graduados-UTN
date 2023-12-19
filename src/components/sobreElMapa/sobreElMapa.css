@@ -1,4 +1,18 @@
 .titulo{
-  
     margin-bottom: 5%;
+}
+
+.containerGraduados{
+    display: flex;
+    justify-content: center;
+}
+.graduados{
+    width: 70%;
+    margin-top: 3%;
+}
+.texto{
+    margin-bottom: 40px;
+}
+.t{
+    display: flex;
 }
